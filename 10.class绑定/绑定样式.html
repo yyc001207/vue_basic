@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src='../js/vue.js'></script>
+    <style>
+        .basic {
+            width: 400px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+
+        .normal {
+            background-color: skyblue;
+        }
+
+        .happy {
+            background-image: linear-gradient(to top right, yellow, pink, orange, yellow);
+        }
+
+        .sad {
+            background-color: gray;
+            border-color: green;
+        }
+
+        .at1 {
+            background-color: red;
+        }
+
+        .at2 {
+            font-size: 80px;
+        }
+
+        .at3 {
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 创建一个容器 -->
+    <div id='root'>
+        <!-- 绑定class样式--字符串写法。适用于：样式类名不确定，需要动态指定 -->
+        <div class="basic" :class="mood" @click="changeMood">{{name}}</div>
+        <br>
+        <!-- 绑定class样式--数组写法。适用于：样式类名不确定，个数不确定 -->
+        <div class="basic" :class="arr">{{name}}</div>
+        <br>
+        <!-- 绑定class样式--数组写法。适用于：样式类名确定，个数确定，动态决定是否使用-->
+        <div class="basic" :class="classObj">{{name}}</div>
+    </div>
+    <script>
+        //阻止vue在启动时生成提示
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                name: '尚硅谷',
+                mood: 'normal',
+                arr: ['at1', 'at2', 'at3'],
+                classObj: {
+                    at1: false,
+                    at2: false,
+                }
+            },
+            methods: {
+                changeMood() {
+                    const arr = ['happy', 'sad', 'normal']
+                    const x = Math.floor(Math.random() * 3)
+                    console.log(x);
+                    this.mood = arr[x]
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

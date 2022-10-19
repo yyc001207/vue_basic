@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src='../js/vue.js'></script>
+</head>
+<!-- 
+        一个重要的内置关系：VueComponent.prototype.__proto__ === Vue.prototype
+        为什么要有这个关系：让组件实例对象（vc）可以访问到 Vue 原型上的属性、方法
+-->
+
+<body>
+    <!-- 创建一个容器 -->
+    <div id='root'>
+        <school></school>
+    </div>
+    <script>
+        //阻止vue在启动时生成提示
+        Vue.config.productionTip = false
+        const school = Vue.extend({
+            template: `
+            <div>
+                <h2>学校名称：{{schoolName}}</h2>
+                <h2>学校地址：{{address}}</h2>
+                </div>
+            `,
+            data() {
+                return {
+                    schoolName: '尚硅谷',
+                    address: '北京',
+                }
+            }
+        })
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                msg: '欢迎学习Vue'
+            },
+            components: {
+                school
+            }
+        })
+
+        // console.log(school.prototype.__proto__ === Vue.prototype);
+
+
+        /*   function Demo() {
+              this.a = 1
+              this.b = 2
+          }
+  
+          const d = new Demo()
+  
+          console.log(Demo.prototype)//显示原型属性
+  
+          console.log(d.__proto__);//隐式原型属性
+  
+          console.log(Demo.prototype === d.__proto__);
+  
+          //通过显示原型对象操作原型对象
+          Demo.prototype.x = 99
+  
+          console.log(d); */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const SCHOOL = '尚硅谷';
+        /* 
+        1.必须赋值
+        2.一般常量要大写（不报错）
+        3.常量值不可更改
+        4.块级作用域
+        5.对数组和对象的元素修改，不算对常量的修改，不会报错
+        */
+        //    数组的结构
+        const F4 = ['唐易璇', '将曙光', '周子云', '曾诚颖'];
+        let [tang,jiang,zhou,zeng]=F4;
+        // console.log(tang);
+
+        // 对象的解构
+        const yang={
+            name:'爹',
+            age:18,
+            tiwate:function(){
+                console.log("上号清体力");
+            }
+        };
+        let {tiwate}=yang;
+        tiwate();
+    </script>
+</body>
+
+</html>

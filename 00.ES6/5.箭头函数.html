@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let fn1=function(){
+        // };
+        // let fn2=(a,b)=>{
+        //     return a+b;
+        // };
+        // let result=fn2(1,2);
+        // console.log(result);
+
+        // this静态的，this始终指向函数声明时所在的作用域下的this的值
+        function getname() {
+            console.log(this.name);
+        }
+        let getname2 = () => {
+            console.log(this.name);
+        }
+        window.name = '尚硅谷'
+        const school = {
+            name: "atguigu"
+        };
+        // 直接调用
+        getname();
+        getname2();
+        // call方法调用
+        getname.call(school);
+        getname2.call(school);
+
+        //不能作为构造函数实例化对象
+
+        //不能使用arguments变量
+
+        //简写
+        //省略小括号形参只有一个
+        let add = n => {
+            return n + n;
+        }
+        // 省略花括号，代码体只用一条语句，此时return必须省略
+        let pow = n => n * n;
+        console.log(pow(9));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+    <!-- 创建一个容器 -->
+    <div id='root'>
+        <app></app>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        const student = Vue.extend({
+            name: 'student',
+            template: `
+            <div>
+                <h2>学生姓名：{{studentName}}</h2>
+                <h2>学生年龄：{{age}}</h2>
+                </div>
+            `,
+            data() {
+                return {
+                    studentName: '张三',
+                    age: 18,
+                }
+            },
+        })
+
+        const school = Vue.extend({
+            name: 'school',
+            template: `
+            <div>
+                <h2>学校名称：{{schoolName}}</h2>
+                <h2>学校地址：{{address}}</h2>
+                <student></student>
+                </div>
+            `,
+            data() {
+                return {
+                    schoolName: '尚硅谷',
+                    address: '北京',
+                }
+            },
+            components: {
+                student
+            }
+        })
+
+        const hello = Vue.extend({
+            template: `<h1>{{msg}}</h1>`,
+            data() {
+                return {
+                    msg: '欢迎学习Vue!'
+                }
+            },
+        })
+
+        const app = Vue.extend({
+            template: `<div>
+                <hello></hello>
+                <school></school>
+                </div>`,
+            components: {
+                school,
+                hello
+            }
+        })
+        
+        const vm = new Vue({
+            el: '#root',
+            components: {
+                app
+            }
+        })
+    </script>
+</body>
+
+</html>

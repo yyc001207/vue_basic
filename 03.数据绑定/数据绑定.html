@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<!-- 
+    1.单向绑定（v-bind）：数据只能从data中流向页面
+    2.双向绑定（v-model）：数据不仅能从data流向页面，还可以从页面流向data
+                            v-model:value可简写为v-model，v-model默认绑定value
+-->
+
+<body>
+    <div id="root">
+        单向数据绑定：<input type="text" v-bind:value="name"><br><br>
+        双向数据绑定：<input type="text" v-model:value="name"><br><br>
+        单向数据绑定简写：<input type="text" :value="name"><br><br>
+        双向数据绑定简写：<input type="text" v-model="name">
+        <!-- v-model只能应用在表单元素（输入元素）上 -->
+        <h2 v-model:x="name">你好</h2>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false
+    new Vue({
+        el: '#root',
+        data: {
+            name: '尚硅谷'
+        }
+    })
+</script>
+
+</html

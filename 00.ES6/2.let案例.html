@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item {
+            width: 100px;
+            height: 40px;
+            border: 1px solid #000;
+            float: left;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+    <script>
+        let item = document.getElementsByClassName('item');
+        for (let i = 0; i < item.length; i++) {
+            item[i].onclick = function () {
+                // this.style.background='pink'
+                item[i].style.background = 'pink';
+            }
+        }
+        // 使用let i 执行循环体时
+        // 相当于每执行一次都生成了一个块级作用域并使用let声明了i
+        // {
+        //     let i = 0
+        //     item[i].onclick = function () {
+        //         item[i].style.background = 'pink';
+        //     }
+        // }
+        // {
+        //     let i = 1
+        //     item[i].onclick = function () {
+        //         item[i].style.background = 'pink';
+        //     }
+        // }
+        // {
+        //     let i = 2
+        //     item[i].onclick = function () {
+        //         item[i].style.background = 'pink';
+        //     }
+        // }
+    </script>
+</body>
+
+</html>

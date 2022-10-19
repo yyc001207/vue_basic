@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+    <!-- 创建一个容器 -->
+    <div id='root'>
+        姓：<input type="text" v-model="firstName"><br>
+        名：<input type="text" v-model="lastName"><br>
+        姓名：<span>{{fullName}}</span><br>
+        姓名：<span>{{fullName}}</span><br>
+        姓名：<span>{{fullName}}</span><br>
+        姓名：<span>{{fullName}}</span>
+    </div>
+    <script>
+        //阻止vue在启动时生成提示
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                firstName: '张',
+                lastName: '三',
+            },
+            // 计算属性
+            computed: {
+                fullName: {
+                    /* 
+                        get什么时候被调用
+                            1.初次读取fullName时
+                            2.所有依赖的数据发生变化时
+                    */
+                    get() {
+                        console.log("get被调用");
+                        return this.firstName + '-' + this.lastName;
+                    },
+                    set(value){
+                        //当fullname被修改时调用
+                        console.log('set',value);
+                        const arr=value.split('-');
+                        this.firstName=arr[0];
+                        this.lastName=arr[arr.length-1];
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
